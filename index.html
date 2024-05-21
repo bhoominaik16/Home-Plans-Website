@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhoomi's Home Plans</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e4343eeeba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="homepage">
+            <div class="header">
+                <nav>
+                    <img src="/img/logo.png" >
+                    <ul id="sidemenu">
+                        <li><a href="#homepage">Home</a></li>
+                        <li><a href="#aboutpage">About</a></li>
+                        <li><a href="#projectspage">Projects</a></li>
+                        <li><a href="#servicespage">Services</a></li>
+                        <li><a href="#contactpage">Contact</a></li>        
+                        <i class="fas fa-solid fa-x" onclick="closemenu()"></i>                   
+                    </ul>
+                    <i class="fas fa-solid fa-bars" onclick="openmenu()"></i>
+                </nav>
+            </div>
+            <div class="home">
+                <p class="p1">Welcome to <span>Bhoomi's Home Plans</span></p>
+                <p class="p2">See your dream Home come to reality</p>
+                
+            </div>
+        </div>
+        <div id="aboutpage">
+            <div class="aboutus">
+                <h1>About Us</h1>
+            </div>
+            <div class="about">
+                <img src="img/img1.jpg">
+                <p><span>Hello Viewers! </span><br>
+                Have a Home Plan in your mind but thinking of how to get it?<br>
+                Here's the solution to your problem.<br>
+                <span>Bhoomi's Home Plans</span> work hard to Design and Build your Dream Home<br>
+                We Design a home that Fit to your Project <br>
+                Just take a look at our best Projects</p>
+                <img src="img/img7.jpg">
+            </div>    
+        </div>
+        <div id="projectspage">
+            <div class="projects">
+                <div class="marquee">
+                    <marquee behavior="scroll" direction="left"><h1>Here are our Best Projects</h1></marquee>
+                </div>
+                <div class="project_content">
+                    <img src="img/img2.jpg">
+                    <img src="img/img3.jpg">
+                    <img src="img/img4.jpg">
+                    <img src="img/img6.jpg">
+                </div>
+            </div>
+        </div>
+        <div id="servicespage">
+            <div class="services">
+                <div class="services_heading">
+                    <h1>Here are our services</h1>
+                </div>
+                <div class="services-content">
+                    <div class="box"> 
+                        <ul>
+                            <li><h2>Home Desigining</h2></li>
+                            <ol> 
+                                <li>Home Planning/Layouting</li> 
+                                <li>Virtual 2D Model</li>    
+                                <li>Virtual 3D Model</li>                       
+                            </ol>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <ul>
+                            <li><h2>Interior Designing</h2></li>
+                            <ol>
+                                <li>Colouring/Painting</li>
+                                <li>Pop Desigining </li>
+                                <li>Furniture</li>
+                            </ol>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contactpage">
+            <div class="contactus">
+                <h1>Contact Us</h1>
+            </div>
+            <div class="reviews-contact">
+                <div class="reviews">
+                    <div class="reviewsheading">
+                        <div>
+                            <h3>We are Glad to Listen your Reviews</h3>
+                        </div>
+                    </div>    
+                    <form name="submit-to-google-sheet-1">
+                        <input type="text" name="Name" placeholder="Enter your Name">
+                        <input type="email" name="Email" placeholder="Enter your Email">
+                        <textarea name="Review" rows="8" placeholder="Enter your Review"></textarea>
+                        <div class="btn">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                    <span id="msg1"></span>
+                </div>
+                <div class="contact">
+                    <div class="contactheading">
+                        <div>
+                            <h3>Feel Free to Contact Us</h3>
+                        </div>
+                    </div>    
+                    <form name="submit-to-google-sheet-2">
+                        <input type="text" name="name" placeholder="Enter your Name">
+                        <input type="email" name="email" placeholder="Enter your Email">
+                        <textarea name="Message" rows="8" placeholder="Enter your Message"></textarea>
+                        <div class="btn">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                    <span id="msg2"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="copyr">
+                <p>Copyright @Bhoomi. Made with <i class="fa-solid fa-heart"></i> by Bhoomi's Home Plans</p>
+            </div>
+            <div class="social-icons">
+                <a href="mailto:bhoominaik16@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/bhoomi-naik-4a84222a2/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+    <script>
+        const scriptURL1 = 'https://script.google.com/macros/s/AKfycbwxULvYL85L9cVaQCdNfrVZFdJskMSwmHznZpVCphriH04Xxp_MRGSH41iP112OTFYZ/exec'
+        const form1 = document.forms['submit-to-google-sheet-1']
+        const msg1 = document.getElementById("msg1")
+      
+        form1.addEventListener('submit', (e) => {
+          e.preventDefault()
+          fetch(scriptURL1, { method: 'POST', body: new FormData(form1)})
+            .then(response => {
+                msg1.innerHTML= "Review is sent successfully"
+                setTimeout(function(){
+                    msg1.innerHTML = ""
+                },5000)
+                form1.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+      <script>
+        const scriptURL2 = 'https://script.google.com/macros/s/AKfycbx6sjxUemrlYY6XPH-BYm4nHsbRFB4oi3bNUB1AFi-VYFA_EC_mEzziQvJenAu6GXoa/exec'
+        const form2 = document.forms['submit-to-google-sheet-2']
+        const msg2 = document.getElementById("msg2")
+      
+        form2.addEventListener('submit', (e) => {
+          e.preventDefault()
+          fetch(scriptURL2, { method: 'POST', body: new FormData(form2)})
+            .then(response => {
+                msg2.innerHTML= "Message is sent successfully"
+                setTimeout(function(){
+                    msg2.innerHTML = ""
+                },5000)
+                form2.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
